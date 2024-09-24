@@ -25,6 +25,17 @@ class VideoController extends Controller
     $video->title = $request->title;
     $video->description = $request->description;
     $video->save();
-    return redirect('/home');
-}
+    return redirect('/');
+    }
+
+    public function create()
+    {
+        return view('input');
+    }
+
+    public function search(Request $request)
+    {
+        $videos = Video::where('title','LIKE','%'.$request->cari.'%')->orwhere('description','LIKE','%'.$request->cari.'%')->get();
+        return view('home', compact('videos'));
+    }
 }
