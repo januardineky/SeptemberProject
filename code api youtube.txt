@@ -1,0 +1,45 @@
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Video;
+use GuzzleHttp\Client;
+
+class VideoController extends Controller
+{
+    //
+    public function home()
+    {
+        $videos = Video::all();
+        return view('home', compact('videos'));
+    }
+
+    public function uploadVideo(Request $request)
+    {
+        $youtubeLink = $request->input('youtube_link');
+        // Validate the YouTube link
+        if (!preg_match('/^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=)?([^&\s]+)$/', $youtubeLink)) {
+            return back()->withError('Invalid YouTube link');
+        }
+        // Extract the video ID from the YouTube link
+        $videoId = preg_replace('/.*v=([^&\s]+).*/', '$1', $youtubeLink);
+        // Validate the video ID using the YouTube API
+        $client = new Client();
+        $response = $client->get('https://www.googleapis.com/youtube/v3/videos', [
+            'query' => [
+                'part' => 'id',
+                'id' => $videoId,
+                'key' => 'YOUR_YOUTUBE_API_KEY',
+            ],
+        ]);
+        if ($response->getStatusCode() !== 200) {
+            return back()->withError('Invalid video ID');
+        }
+        // Create a new Video model instance
+        $video = new Video();
+        $video->video_id = $videoId;
+        $video->title = $request->title;
+        $video->description = $request->description;
+        $video->save();
+        return redirect('/home');
+    }
+}
