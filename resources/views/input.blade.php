@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input</title>
+    <title>Create</title>
+    <style>
+        nav{
+            background-color: #03A9F4;
+        }
+    </style>
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
+    <link rel="icon" href="{{ asset('asset/favicon.png.png') }}" type="image/x-icon">
 </head>
 <body>
     @include('sweetalert::alert')
-    <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
             <a href="/home" class="navbar-brand">Ini Judul</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar">
@@ -38,7 +44,7 @@
                                 <label for="price">Deskripsi</label>
                                 <input type="text" class="form-control" id="price" name="description" placeholder="Enter Description">
                             </div>
-                            <input type="submit" class="btn btn-secondary w-100 btn-block mt-5" value="SIMPAN"></input>
+                            <input type="submit" style="background-color: #2196F3" class="btn text-white w-100 btn-block mt-5" value="SIMPAN"></input>
                         </form>
                     </div>
                 </div>

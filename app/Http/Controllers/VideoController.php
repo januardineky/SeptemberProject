@@ -71,7 +71,7 @@ class VideoController extends Controller
 
         if (!preg_match($pattern, $request->input('youtube_link'))) {
             // return redirect()->back()->withErrors(['youtube_link' => 'Invalid YouTube link']);
-            Alert::error('Error', 'Link Youtube tidak sesuai');
+            Alert::error('Error', 'Url tidak sesuai');
             return redirect()->back();
         }
 
@@ -155,7 +155,7 @@ class VideoController extends Controller
 
     if (!preg_match($pattern, $youtubeLink, $matches)) {
         // Handle invalid YouTube link
-        Alert::error('Error', 'Link Youtube tidak sesuai');
+        Alert::error('Error', 'Url tidak sesuai');
         return redirect()->back();
     }
 

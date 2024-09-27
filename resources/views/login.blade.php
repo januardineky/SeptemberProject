@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('asset/favicon.png.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         .card {
@@ -42,7 +43,7 @@
                                 </div>
 
                                 <!-- Submit button -->
-                                <input type="submit" class="btn btn-primary btn-block mb-4" value="Submit"></input>
+                                <input type="submit" style="background-color: #2196F3" class="btn text-white" value="Submit"></input>
                             </form>
                         </div>
                     </div>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="{{ asset('asset/favicon.png.png') }}" type="image/x-icon">
     <style>
         @media (max-width: 768px) {
         .navbar .container {
@@ -29,6 +30,10 @@
             margin-top: 20px;
         }
     }
+
+    nav{
+            background-color: #03A9F4;
+        }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Home</title>
@@ -36,7 +41,7 @@
 </head>
 <body>
     @include('sweetalert::alert')
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container px-4 px-lg-5">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand" href="/home">Ini Judul</a>
@@ -59,10 +64,12 @@
                 @foreach($videos as $video)
                     <div class="col mb-5">
                         <div class="card h-100">
+                            <div class="card-header">
+                                <h6 class="card-title text-center" style="font-size: larger">{{ $video->title }}</h6>
+                            </div>
                             <iframe allowfullscreen id="player-{{ $video->id }}" width="100%" height="200" src="https://www.youtube.com/embed/{{ $video->video_id }}"></iframe>
                             <div class="card-body p-4">
-                                <h6 class="card-title" style="font-size: larger">{{ $video->title }}</h6>
-                                <p class="card-text">Username : {{ $video->user->name }}</p>
+                                <p class="card-text" style="font-size: medium">{{ $video->user->name }}</p>
                                 <p class="card-text" style="font-size: small">{{ $video->description }}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     @if(auth()->id() == $video->user_id)

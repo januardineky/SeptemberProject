@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Admin</title>
+    <title>Update</title>
     <link rel="stylesheet" href="{{ asset('asset/css/bootstrap.min.css') }}">
+    <style>
+        nav{
+            background-color: #03A9F4;
+        }
+    </style>
+    <link rel="icon" href="{{ asset('asset/favicon.png.png') }}" type="image/x-icon">
 </head>
 <body>
     @include('sweetalert::alert')
-    <nav class="navbar navbar-expand-sm navbar-dark bg-danger">
+    <nav class="navbar navbar-expand-sm navbar-dark">
         <div class="container">
             <a href="/home" class="navbar-brand">Ini Judul</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar">
@@ -21,7 +27,7 @@
             <div class="col-md-6">
                 <div class="card mt-5">
                     <div class="card-header text-center">
-                        Input Video
+                        Edit Video
                     </div>
                     <div class="card-body">
                         <form action="/edit/{{ $video->id }}" method="POST">
@@ -38,7 +44,7 @@
                                 <label for="price">Deskripsi</label>
                                 <input type="text" class="form-control" id="price" name="description" placeholder="Enter Description" value="{{ $video->description }}">
                             </div>
-                            <input type="submit" class="btn btn-secondary w-100 btn-block mt-5" value="SIMPAN"></input>
+                            <input type="submit" style="background-color: #2196F3" class="btn w-100 btn-block mt-5 text-white" value="SIMPAN"></input>
                         </form>
                     </div>
                 </div>
